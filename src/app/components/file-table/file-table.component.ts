@@ -11,7 +11,7 @@ declare var swal: any;
   styleUrls: ['./file-table.component.css']
 })
 export class FileTableComponent implements OnInit {
-  columns: Array<string> = ['Name', 'Size (byte)', 'Action'];
+  columns: Array<string> = Constants.TABLE_COLUMNS;
   listedFiles;
   files: UploadFile[] = [];
   droppedFiles: Array<File> = [];
@@ -31,7 +31,6 @@ export class FileTableComponent implements OnInit {
   public downloadFile(file: string): void {
     this.fileService.getFile(file).subscribe(
       res => {
-        console.log('start download:',res);
         var url = window.URL.createObjectURL(res.data);
         var a = document.createElement('a');
         document.body.appendChild(a);
@@ -49,7 +48,6 @@ export class FileTableComponent implements OnInit {
 
   public dropped(event: UploadEvent) {
     this.files = event.files;
-    console.log('Drop event')
     for (const droppedFile of event.files) {
  
       if (droppedFile.fileEntry.isFile) {
@@ -68,15 +66,6 @@ export class FileTableComponent implements OnInit {
       }
     }
   }
-
-  public fileOver(event){
-    console.log(event);
-  }
- 
-  public fileLeave(event){
-    console.log(event);
-  }
-
 
   public uploadFile(fileName: string): void {
     for (let file of this.droppedFiles) {

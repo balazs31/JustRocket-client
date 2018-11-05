@@ -1,11 +1,12 @@
 export class AppSettings {
     public static API = {
         HOST: "http://localhost",
-        PORT: 4200,
+        PORT: 8080,
         ENDPOINTS: {
             UPLOAD: "/uploadFile",
             DOWNLOAD: "/downloadFile/",
-            LOGIN: "/login"
+            LOGIN: "/login",
+            GETFILES: "/getFiles"
         }
     }
 }

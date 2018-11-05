@@ -19,5 +19,7 @@ export class Constants {
           CONFIRM: "#3085d6",
           CANCEL: "#d33"
         }
-      };
+    };
+
+    public static TABLE_COLUMNS = ["Name", "Size (bytes)", "Action"];
 }
