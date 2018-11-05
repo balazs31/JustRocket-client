@@ -15,7 +15,7 @@
         <tr *ngFor="let file of droppedFiles">
           <td>{{file.name}}</td>
           <td>{{file.size}}</td>
-          <td class="">
+          <td>
             <a class="btn btn-success" role="button" (click)="uploadFile(file.name)">Upload</a>
           </td>
         </tr>
@@ -31,7 +31,7 @@
     <tr *ngFor="let file of listedFiles">
       <td>{{file.name}}</td>
       <td>{{file.size}}</td>
-      <td class="">
+      <td>
         <a class="btn btn-success" role="button" (click)="downloadFile(file.name)">Download</a>
       </td>
     </tr>
