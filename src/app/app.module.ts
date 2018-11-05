@@ -11,7 +11,7 @@ import { FileTableComponent } from './components/file-table/file-table.component
 
 import { UserService } from "./services/user.service";
 import { EncryptionService } from "./services/encryption.service";
-
+import { FileService } from "./services/file.service"
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { AuthGuard } from './helpers/auth.guard'
 
@@ -32,6 +32,7 @@ import { AuthGuard } from './helpers/auth.guard'
   providers: [
     UserService,
     EncryptionService,
+    FileService,
     AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
