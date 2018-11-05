@@ -9,7 +9,7 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  loginStatus: number = -1;
   user: any = {};
   currentUser: User;
   constructor(private userService: UserService,
@@ -31,6 +31,8 @@ export class LoginComponent implements OnInit {
 
         }, error => {
           console.log('Error logging in', error);
+          this.loginStatus = error.status;
+        
         }
     );
   }

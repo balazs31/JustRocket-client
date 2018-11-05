@@ -3,7 +3,13 @@
     <h2 class="form-signin-heading">Login</h2>
     <input id="user" class="form-control" [(ngModel)]="user.username" name="username" placeholder="username" required autofocus>
     <input id="pass" type="password" class="form-control" [(ngModel)]="user.pass" name="pass" placeholder="password" required>
+    <div [hidden]="loginStatus != 401" class="alert alert-danger" role="alert">
+      Bad credentials!
+    </div>
 
+    <div [hidden]="loginStatus != 0" class="alert alert-danger" role="alert">
+      Connection error!
+    </div>
     <button class="btn btn-lg btn-primary btn-block" pulse-animation type="submit">Log in</button>
   </form>
 </div>

@@ -1,6 +1,10 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FileService } from '../../services/file.service'
 import { UploadEvent, UploadFile, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
+import { Constants } from '../../constants/constants'
+
+declare var swal: any;
+
 @Component({
   selector: 'app-file-table',
   templateUrl: './file-table.component.html',
@@ -84,7 +88,17 @@ export class FileTableComponent implements OnInit {
             this.listedFiles.push(file);
             this.cdRef.detectChanges()
             console.log(this.droppedFiles);
+            swal(
+              Constants.ALERTS.TITLE.UPLOADED,
+              Constants.ALERTS.MESSAGE.FILE_UPLOADED,
+              Constants.ALERTS.TYPE.SUCCESS
+            );
           }, error => {
+            swal(
+              Constants.ALERTS.TITLE.ERROR,
+              Constants.ALERTS.MESSAGE.ERROR_MESSAGE,
+              Constants.ALERTS.TYPE.ERROR
+            );
             console.log('Upload error: ', error)
           }
         )
