@@ -12,8 +12,8 @@ import { FileTableComponent } from './components/file-table/file-table.component
 import { UserService } from "./services/user.service";
 import { EncryptionService } from "./services/encryption.service";
 
-import { JwtInterceptor } from './helpers/jwt-interceptor';
-
+import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { AuthGuard } from './helpers/auth.guard'
 
 @NgModule({
   declarations: [
@@ -32,6 +32,7 @@ import { JwtInterceptor } from './helpers/jwt-interceptor';
   providers: [
     UserService,
     EncryptionService,
+    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
