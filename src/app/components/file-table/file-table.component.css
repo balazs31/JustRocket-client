@@ -2,3 +2,11 @@ div .table {
     margin-top: 2vh;
 }
 
+.files-container {
+    margin-top: 4vh;
+}
+
+.drop-zone {
+    margin-left: 10vh;
+    margin-right: 10vh;
+}

@@ -9,9 +9,9 @@ export class UserService {
     constructor(private httpClient: HttpClient) {}
 
     public login(user: User) {
-        let headers = new HttpHeaders({'Authorization': 'Basic ' + btoa(user.username + ':' + user.pass));
+        let headers = new HttpHeaders({'Authorization': 'Basic ' + btoa(user.username + ':' + user.pass)});
     
-        return this.httpClient.post('http://localhost:8080/login', {}, {headers: headers}));
+        return this.httpClient.post('http://localhost:8080/login', {}, {headers: headers});
     
     }
 }

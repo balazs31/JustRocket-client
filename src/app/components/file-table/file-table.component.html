@@ -1,5 +1,28 @@
-<div class="container">
-<table id="listed-files-table" class="table table-fixed table-bordered table-responsive-lg">
+<div class="container files-container">
+  <div class="center">
+      <file-drop class="drop=zone" headertext="Drop files here" (onFileDrop)="dropped($event)" 
+      (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+          <span></span>
+      </file-drop>
+  </div>
+
+  <table id="upload-table" class="table table-fixed table-bordered table-responsive-lg">
+      <thead class="thead-light">
+        <tr>
+          <th *ngFor="let column of columns" scope="col">{{column}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let file of droppedFiles">
+          <td>{{file.name}}</td>
+          <td>{{file.size}}</td>
+          <td class="">
+            <a class="btn btn-success" role="button" (click)="uploadFile(file.name)">Upload</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+<table id="file-table" class="table table-fixed table-bordered table-responsive-lg">
   <thead class="thead-light">
     <tr>
       <th *ngFor="let column of columns" scope="col">{{column}}</th>
