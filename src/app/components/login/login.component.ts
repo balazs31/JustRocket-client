@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../model/user.model'
+import { User } from '../../model/user.model';
+import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,7 +12,8 @@ export class LoginComponent implements OnInit {
 
   user: any = {};
   currentUser: User;
-  constructor() { 
+  constructor(private userService: UserService,
+              private router: Router) { 
   }
 
   ngOnInit() {
@@ -18,5 +22,16 @@ export class LoginComponent implements OnInit {
 
   login(): void {
     console.log('Logging in: ' + this.user.username + " " + this.user.pass)
+    this.currentUser = new User(this.user.username, this.user.pass);
+    this.userService.login(this.user).subscribe(
+        response => {
+          console.log('Successfull login');
+          localStorage.setItem('currentUser', JSON.stringify({userName : this.currentUser.username, password : this.currentUser.pass}))
+          this.router.navigate(['/files']);
+
+        }, error => {
+          console.log('Error logging in', error);
+        }
+    );
   }
 }
