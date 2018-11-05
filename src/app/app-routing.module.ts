@@ -4,9 +4,10 @@ import { RouterModule, Routes } from "@angular/router";
 import { FileTableComponent } from "./components/file-table/file-table.component";
 import { LoginComponent } from "./components/login/login.component";
 
+import { AuthGuard } from "./helpers/auth.guard"
 
 const routes: Routes = [
-  { path: "files", component: FileTableComponent },
+  { path: "files", component: FileTableComponent, canActivate: [AuthGuard] },
   { path: "login", component: LoginComponent },
   { path: "**", redirectTo: "/files" }
 ];
